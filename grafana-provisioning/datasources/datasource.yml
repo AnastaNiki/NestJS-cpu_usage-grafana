@@ -1,0 +1,11 @@
+apiVersion: 1
+datasources:
+  - name: cpu-mon-infinity-datasource
+    uid: a1942a7d-8930-4898-bb73-95170f5f383e
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    #user: 
+    #password: 
+    url: "http://host.docker.internal:3009"
+    isDefault: true
+    editable: true

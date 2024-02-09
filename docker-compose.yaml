@@ -2,7 +2,7 @@ version: '3.8'
 services:
   grafana:
     image: grafana/grafana-enterprise
-    container_name: grafana
+    container_name: grafana-cpu
     restart: unless-stopped
     # if you are running as root then set it to 0
     # else find the right id with the id -u command
@@ -11,6 +11,12 @@ services:
       - '3010:3000'
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    # adding the mount volume point which we create earlier
+    environment:
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
     volumes:
-      - '$PWD/data:/var/lib/grafana'
+    # - '$PWD/data:/var/lib/grafana'
+      - grafana-cpu-storage:/var/lib/grafana
+      - ./grafana-provisioning:/etc/grafana/provisioning
+
+volumes:
+  grafana-cpu-storage:
